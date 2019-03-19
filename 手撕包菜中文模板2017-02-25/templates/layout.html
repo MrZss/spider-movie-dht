@@ -1,0 +1,64 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+    	<meta charset="utf-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+      {% block keywords %}
+        <meta name="keywords" content="熊猫BT,bt,BT,BT吧,BTBA,bt种子,BT种子下载,bt天堂,BT天堂,BT电影,电影天堂,bt电影,电影bt,bt电影天堂,bt电影下载,BT迅雷下载,PandaBT,迅雷bt种子下载,迅雷bt下载,迅雷bt电影下载,迅雷下载,磁力下载,磁力链接">
+      {% endblock %}
+      {% block description %}
+        <meta name="description" content="PandaBT——全球领先的种子搜索引擎，是新一代的p2p种子搜索神器，致力于给广大网友提供最先进的种子搜索服务，超过1000万条的最全p2p种子库，没有你搜不到，只有你想不到！">
+      {% endblock %}
+    	{% block title %}
+        <title>Pandabt.com 种子搜索网站|种子搜索|磁力链接|种子搜索神器|最新最快最全的BT种子、磁力搜索引擎！</title>
+      {% endblock %}
+      <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+      <script src="{% static 'js/jquery-1.11.0.min.js' %}"></script>
+  	</head>
+        {% block content %}
+      		
+        {% endblock %}
+	<div id="footer">
+		<p><a href=" http://www.pandabt.com/">BT搜索</a> | <a href=" http://www.pandabt.com/">磁力搜索</a> | <a href=" http://www.pandabt.com/">磁力链接</a> </p>
+	</div>
+	<script type="text/javascript">
+		(function ($) {
+			$(document).ready(function() {
+				$('.x-sform').submit(function(e){
+				    e.preventDefault();
+				    var kw = $('.x-kw').val();
+				    if(!kw){
+				        $('.x-kw').focus();
+				        return false;
+				    }
+				    var url = '/search/' + encodeURIComponent(kw) + '/';
+				    window.location = url;
+				    return false;
+				});
+			});
+		}(jQuery));
+	</script>
+	<script>
+		(function(){
+			var bp = document.createElement('script');
+			bp.src = '//push.zhanzhang.baidu.com/push.js';
+			var s = document.getElementsByTagName("script")[0];
+			s.parentNode.insertBefore(bp, s);
+		})();
+	</script>
+	<script charset="GBK" src="http://www.baidu.com/js/opensug.js"></script>
+	<div style="display:none">
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+			  var hm = document.createElement("script");
+			  hm.src = "//hm.baidu.com/hm.js?98055631c8d3246b60f9c4248f102210";
+			  var s = document.getElementsByTagName("script")[0]; 
+			  s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+	</div>
+</body>
+</html>

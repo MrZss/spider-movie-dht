@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+{% block keywords %}
+  <meta name="keywords" content="{{keyword}}|{{keywords|join:','}},磁力链接,磁力搜索,PandaBT ">
+{% endblock %}
+{% block description %}
+  <meta name="description" content="{{ info.name }},磁力链接,bt种子搜索百度云,迅雷下载页">
+{% endblock %}
+{% block title%}
+  <title>{{ info.name }} 磁力链接 - 磁力搜索 - PandaBT</title>
+{% endblock %}
+{% block content %}
+<body id="content">
+<div id="wrapper">
+ 
+<div id="header">
+ 
+<h1 id="logo"><a href="/" title="磁力链接搜索引擎"><span class="n5">PandaBT</span></a></h1>
+<div id="sbox">
+<form name="btform" class="x-sform">
+<input type="text" baiduSug="2" autocomplete="off" id="input" name="kw" placeholder="" class="stbox  x-kw" value="{{ info.name }}"/>
+<input type="submit" onmouseout="this.className=''" onmousedown="this.className='mousedown'" onmouseover="this.className='hover'" value="搜索" id="sbutton"/>
+</form>
+</div>
+</div>
+<div id="container">
+<div class="main">
+<h1 class="T1">PandaBT</h1>
+
+<dl class="BotInfo">
+<p></p>
+<p>文件大小: {{info.length | filesizeformat}}</p>
+<!-- <p>文件数量: {{info.files|length}} </p> -->
+<p>创建日期: {{info.create_time|date:"Y-m-d"}}</p>
+<p>访问热度: {{info.requests}} &#176;C</p>
+<!--p>保存种子：<a href="/download/1e0da66464d81ed9f1e38dee548b15db4cf05214.torrent">点击下载</a>  </p-->
+<p>磁力链接: <a href="magnet:?xt=urn:btih:{{ info.info_hash}}&dn={{ info.name }}">magnet:?xt=urn:btih:{{ info.info_hash}}&dn={{ info.name }}</a></p>
+<p>文件列表:</p>
+</dl>
+<ol class="flist">
+    {% if info.files %}
+        {% for y in info.files %}
+            <li>{{y.path}}<span class="label label-default">{{y.length|filesizeformat}}</span></li>
+        {% endfor %}
+    {% else %}
+         <li>{{info.name}}<span class="label label-default">{{info.length|filesizeformat}}</span></li>
+    {% endif %}
+</ol>
+</div>
+<div class="rightadbox" style="">
+<h4>关键词</h4>
+
+<div class="hotkbox">
+    {% for kw in keywords %}
+        <a rel="nofollow" title="{{kw}} 磁力搜索" href="/search/{{kw|urlencode}}/">{{kw}}</a>
+    {% endfor %}
+</div>
+</div>
+</div>
+</div>
+</div>
+{% endblock %} 

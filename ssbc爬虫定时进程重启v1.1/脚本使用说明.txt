@@ -1,0 +1,14 @@
+此脚本解决：ssbc爬虫和入库经常出现mysql has gone away的情况
+
+ssbc的默认目录在/root/ssbc-master
+将此脚本传到/root目录下
+然后给执行权限
+chmod +x ssbc-reboot.sh
+增加计划任务
+crontab -e
+按i进入编辑模式
+0,30 * * * * sh /root/ssbc-reboot.sh
+按Esc键退出编辑模式，然后按着shift并同时连按2次z，即回到shell界面。
+-----------------------------
+0,30 * * * * sh /root/ssbc-reboot.sh   
+意思是每小时的0分和30分自动执行ssbc-reboot.sh这个文件

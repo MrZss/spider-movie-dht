@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% load staticfiles %}
+{% block content %}
+<body id="home" onload="document.btform.kw.focus();">
+	<div id="wrapper">
+		<div id="header">
+			<h1 id="logo"><span class="n1">Panda</span><span class="n4">Bt</span><span class="n6">.</span><span class="n5">c</span><span class="n5">o</span><span class="n5">m</span></h1>
+			<p class="slogan">PandaBT - 最好用的磁力链接搜索引擎</p>
+			<div id="sbox">
+				<form name="btform" class="x-sform">
+					<input type="text" baiduSug="2" autocomplete="off" placeholder="世界那么大，我想搜搜看" id="kw" name="s" class="stbox x-kw"/>
+					<input type="submit" onmouseout="this.className=''" onmousedown="this.className='mousedown'" onmouseover="this.className='hover'" value="搜索" id="sbutton"/>
+				</form>
+			</div>
+			<div class="hotwords">
+			{% for r in reclist%}
+                <a title="{{r.keyword}}" href="/search/{{r.keyword|urlencode}}/">{{r.keyword}}</a>
+            {% endfor %}
+			</div>
+		</div>
+		<div id="container">
+			<div class="main">
+			</div>
+		</div>
+	</div>
+{% endblock %}
+{% block scripts %}
+  {{ block.super }}
+	<script type="text/javascript">
+		$(function(){
+			$('#kw').focus();
+		});
+	</script>
+{% endblock %}
